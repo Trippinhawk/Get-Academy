@@ -1,0 +1,87 @@
+<!doctype html>
+
+<html>
+<head>
+    <title>wish me luck</title>
+    <style>
+        h1{ 
+            color:purple;
+            padding: 10px;
+            margin: 10px;
+            
+        }
+        div { 
+            color: blue;
+            background-color: red;
+            padding: 10px;
+            margin: 10px;
+            border: solid black 2px;
+            width: 30px;
+            height: 30px;
+            font-weight: bold;
+            float: left;
+
+        }
+
+        div2 { 
+            color: rgb(9, 255, 0);
+            background-color: rgb(221, 207, 8);
+            padding: 10px;
+            margin: 10px;
+            border: solid rgb(255, 2, 2) 2px;
+            width: 30px;
+            height: 30px;
+            font-weight: bold;
+            float: left;
+
+        }
+
+        div.firstinline {
+            clear: left;
+        }
+        
+       
+    </style>
+</head>
+<body>
+    <div id="r1s1" onclick="boop(this,'r1s2','r2s1','r1s2','r1s2')">3</div>
+    <div id="r1s2" onclick="boop(this,'r1s1','r2s2','r1s3','r1s3')">5</div>
+    <div id="r1s3" onclick="boop(this,'r1s2','r2s3','r1s2','r1s2')">8</div>
+
+    <div id="r2s1" class="firstinline" onclick="boop(this,'r1s1','r3s1','r2s2','r2s2')">6</div>
+    <div id="r2s2" id="blankmid" onclick="boop(this,'r1s2','r3s2','r2s1','r2s3')"></div>
+    <div id="r2s3" onclick="boop(this,'r1s3','r3s3','r2s2','r2s2')">1</div>
+
+    <div2 id="r3s1" class="firstinline" onclick="boop(this,'r2s1','r3s2','r3s2','r4s1')">7</div>
+    <div2 id="r3s2" onclick="boop(this,'r3s1','r3s3','r2s2','r2s2')">4</div>
+    <div2 id="r3s3" onclick="boop(this,'r2s3','r3s2','r3s2','r3s2')">2</div>
+
+
+
+    <script>
+
+
+        function boop(tagElement, alt1, alt2, alt3,alt4) {
+            if(document.getElementById(alt1).innerHTML==''){
+               document.getElementById(alt1).innerHTML = tagElement.innerHTML;
+            tagElement.innerHTML = '';
+            }
+            if(document.getElementById(alt2).innerHTML==''){
+                document.getElementById(alt2).innerHTML = tagElement.innerHTML;
+            tagElement.innerHTML = '';
+            }
+            if(document.getElementById(alt3).innerHTML==''){
+                document.getElementById(alt3).innerHTML = tagElement.innerHTML;
+            tagElement.innerHTML = '';
+            }
+            if(document.getElementById(alt4).innerHTML==''){
+                document.getElementById(alt4).innerHTML = tagElement.innerHTML;
+            tagElement.innerHTML = '';
+            }
+        }
+    
+    </script>
+    
+
+</body>
+</html>
