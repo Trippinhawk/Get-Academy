@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatable" content="IE-edge">
+    <meta name="viewpoiunt" content="witch=device-width, initial-scale=1.0">
+
+
+    <title>Grid test</title>
+    <style>
+        body {
+            display: grid;
+            background-color: blue;
+            height: 100vh;
+            grid-template-columns: 2fr 2fr;
+            grid-template-rows: 0.2fr 1fr 1fr;
+            grid-template-areas: 'Ltop Rtop'
+                'left right'
+                'bottom bottom';
+        }
+
+
+
+        div.top {
+            grid-area: Ltop;
+            padding-left: 45%;
+            padding-top: 10px;
+
+        }
+
+        div.top2 {
+            grid-area: Rtop;
+            padding-left: 45%;
+            padding-top: 10px;
+        }
+
+        div.left {
+
+            grid-area: left;
+            color: rgb(255, 0, 0)
+        }
+
+        div.bottom {
+
+            grid-area: bottom;
+          
+        }
+
+        div.right {
+
+            grid-area: right;
+            color:blue;
+
+        }
+
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="top"><button button onclick="document.body.style.backgroundColor = 'blue'">Litt Om Meg</></div>
+    <div class="top2"><button buttonon onclick="document.body.style.backgroundColor = 'red'">Min Hobby</></div>
+    <div class="left">
+        <h1> Litt om meg </h1>
+        <p>Jeg streame på twitch som en hobby. Har veldig godt kunnskap på teknologi
+            og digital område.
+            Jeg har godt sosial og kundebehandling nivå fra min servitør arbeid og LAN
+            organisering. Jeg er organisert og like og ha alt på plass fra min erfaring med
+            organisering av selskap og LAN
+        </p>
+    </div>
+    <div class="bottom">
+        <img src="https://cdn.discordapp.com/attachments/1008605596058128424/1061986654782492722/312057037_5434437899937976_8174201260412991006_n.jpg"
+            height="350px" width="350px">
+    </div>
+    <div class="right">
+        <h1>Min Hobby er</h1>
+        <p class="liste">✸Gaming<br>✸Matlaging<br>✸Film<br>✸Musikk</p>
+    </div>
+
+
+
+
+
+
+</body>
+
+</html>
