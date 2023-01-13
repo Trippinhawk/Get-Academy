@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatable" content="IE-edge">
+    <meta name="viewpoiunt" content="witch=device-width, initial-scale=1.0">
+
+
+    <title>Up and Down</title>
+    <style>
+        body {
+            padding: 0px;
+            margin: 0px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="colorting"></div>
+<button onclick="colorswap ('red')">Red</button>
+<button onclick="colorswap ('blue')">Blue</button>
+
+    <script>
+   function colorswap(color){
+     document.getElementById('colorting').innerHTML = /*html*/`
+     <div style="background-color:${color}">
+ `;
+}
+
+
+    </script>
+
+
+</body>
+
+</html>
