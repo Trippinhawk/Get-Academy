@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teamoppg Test</title>
+    <style>
+        body {
+            display:grid;
+            grid-template-columns: 50% 50%;
+            grid-template-rows: 15%;
+            grid-template-areas: 'topl topr'
+            'left right';
+            background-color: lightskyblue;
+            height: 270px;
+            width: 500px;
+        }
+        .left{
+            grid-area:left;
+        }
+        .right{
+            grid-area:right;
+        }
+        .topl{
+            grid-area:topl;
+            margin-top: 0;
+            text-align:center;
+            width:202px ;
+            margin-bottom: 5px;
+            border: 2px solid;
+            
+        }
+        .topr{
+            grid-area:topr;
+            margin-top: 0;
+            text-align:center;
+            width:202px ;
+            margin-bottom: 5px;
+            border: 2px solid;
+        }
+
+        div {
+            background-color: rgba(0, 0, 0, 0.223);
+            padding: 10px;
+            border: solid;
+            
+        }
+
+        .img {
+            border: solid;
+            background-color: rgb(106, 140, 129);
+        }
+
+        .outer {
+            width: 200px;
+            background-color: rgb(68, 113, 134);
+        }
+        .inner {
+            width: 100px;
+            height: 100px;
+        }
+
+        .bag {
+            background-color: rgb(209, 194, 174);
+            width: 200px;
+            height: 270px;
+        }
+        img {
+            height: 100px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="topl">Loot</div>
+    <div class="topr">Bag</div>
+
+    <div class="outer left" id="loot">
+
+    </div>
+    <br>
+    <div class="bag right" id="bagen">
+
+    </div>
+
+    <script>
+        let img1 = document.createElement('img');
+        img1.addEventListener("click", pickUp1);
+        img1.src = "item1.png";
+        let img2 = document.createElement('img');
+        img2.addEventListener("click", pickUp2);
+        img2.src = "item2.png"
+        let img3 = document.createElement('img');
+        img3.addEventListener("click", pickUp3);
+        img3.src = "item3.png"
+        let img4 = document.createElement('img');
+        img4.addEventListener("click", pickUp4);
+        img4.src = "item4.png"
+        
+        document.getElementById('loot').append(img1,img2,img3,img4)
+
+        
+
+        function pickUp1(){
+            document.getElementById('bagen').append(img1)
+        }
+        function pickUp2(){
+            document.getElementById('bagen').append(img2)
+        }
+        function pickUp3(){
+            document.getElementById('bagen').append(img3)
+        }
+        function pickUp4(){
+            document.getElementById('bagen').append(img4)
+        }
+        
+    </script>
+
+</body>
+
+</html>

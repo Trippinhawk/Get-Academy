@@ -51,9 +51,27 @@
                                   ████████████████</div>
 
 
+<div id="test"></div>
+
     <script>
         var outputDiv = document.getElementById('numero');
         var num1 = 0;
+
+        var imgtest = document.getElementById('test');
+        var bandau = document.createElement ("img");
+        bandau.src = "item1.png";
+        document.body.appendChild(bandau);
+
+
+        window.onload = function(){
+          rodom();
+        }
+
+        function rodom(){
+          imgtest.innerHTML = bandau;
+        }
+
+
 
     
 
