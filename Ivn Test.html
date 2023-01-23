@@ -34,22 +34,20 @@
 
 <body>
 
-    <div class="loot" id="slot1">
-        <img id="item1" src='item1.png' height="100px" onclick="ceateAndShowHtml()">
+    <div class="loot left" id="slot1">
+        <img id="item" src='item1.png' height="100px" onclick="take()">
     </div>
-    <div class="bag" id="inventory">
+    <div class="bag right" id="inventory">
 
     </div>
 
 
     <script>
-        //let inventory = document.getElementById('inventory');
-        //let id1 = document.getElementById('item1');
+        var imgtest = document.getElementById('inventory');
+        var bandau = document.createElement ("img");
+        bandau.src = "item2.png";
+        document.querySelector('.bag').appendChild(bandau);
 
-        //function take() {
-          //  inventory = id1
-            //return inventory
-        //}
 
     </script>
 

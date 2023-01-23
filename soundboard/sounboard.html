@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatable" content="IE-edge">
+    <meta name="viewpoiunt" content="witch=device-width, initial-scale=1.0">
+
+
+    <title>memeboard</title>
+    <style>
+
+.meme{
+    width: 150px;
+    height: 150px;
+    text-align: center;
+    background-color: darkred;
+    color:rgb(31, 13, 192);
+    
+}
+.icons{
+    width: 130px;
+    height: 130px;
+
+
+}
+
+    </style>
+</head>
+
+<body>
+
+<button class="meme" onclick ="meme1()"><img class="icons" src ='meme1.jpg'> </button>
+<button class="meme" onclick ="meme2()"><img class="icons" src ='meme2.jpg'> </button>
+<button class="meme" onclick ="meme3()"><img class="icons" src ='meme3.jpg'> </button>
+<button class="meme" onclick ="meme4()"><img class="icons" src ='meme4.jpg'> </button>
+<button class="meme" onclick ="meme5()"><img class="icons" src ='meme5.jpg'> </button>
+<button class="meme" onclick ="meme6()"><img class="icons" src ='meme6.jpg'> </button>
+<button class="meme" onclick ="meme7()"><img class="icons" src ='meme7.jfif'> </button>
+<button class="meme" onclick ="meme8()"><img class="icons" src ='meme8.jpg'> </button>
+<button class="meme" onclick ="meme9()"><img class="icons" src ='meme9.png'> </button>
+<button class="meme" onclick ="randomMeme()"><img class="icons" src ='memer.webp'> </button>
+
+
+    <script>
+function meme1(){
+    new Audio("meme1.mp3").play();
+}
+function meme2(){
+    new Audio("meme2.mp3").play();
+}
+function meme3(){
+    new Audio("meme3.mp3").play();
+}
+function meme4(){
+    new Audio("meme4.mp3").play();
+}
+function meme5(){
+    new Audio("meme5.mp3").play();
+}
+function meme6(){
+    new Audio("meme6.mp3").play();
+}
+function meme7(){
+    new Audio("meme7.mp3").play();
+}
+function meme8(){
+    new Audio("meme8.mp3").play();
+}
+function meme9(){
+    new Audio("meme9.mp3").play();
+}
+
+function randomMeme(){
+            let memeId = Math.ceil(Math.random()* 9);
+            console.log(memeId)
+            if(memeId === 1){
+                return meme1();
+            } 
+            else if(memeId === 2) {
+                return meme2();
+            }
+            else if(memeId === 3) {
+                return meme3();
+            }
+            else if(memeId === 4) {
+                return meme4();
+            }
+            else if(memeId === 5) {
+                return meme5();
+            }
+            else if(memeId === 6) {
+                return meme6();
+            }
+            else if(memeId === 7) {
+                return meme7();
+            }
+            else if(memeId === 8) {
+                return meme8();
+            }
+            else {
+               return meme9();
+            }
+        }
+
+
+
+    </script>
+
+
+</body>
+
+</html>

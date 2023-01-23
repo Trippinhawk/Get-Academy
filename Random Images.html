@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatable" content="IE-edge">
+    <meta name="viewpoiunt" content="witch=device-width, initial-scale=1.0">
+
+
+    <title>Badges</title>
+    <style>
+
+.shadow{
+    margin-left:10px;
+    height: 200px;
+    width: 200px;
+    box-shadow: 7px 5px 5px;
+
+}
+
+    </style>
+</head>
+
+<body>
+
+    <img id="badge1" onclick="badgeRoll('badge1','200px','200px')" class="shadow"/>
+    <img id="badge2" onclick="badgeRoll('badge2','200px','200px')" class="shadow"/>
+    <p></p>
+    <img id="badge3" onclick="badgeRoll('badge3','200px','200px')" class="shadow"/>
+    <img id="badge4" onclick="badgeRoll('badge4','200px','200px')" class="shadow"/>
+
+
+
+
+
+
+
+    <script>
+
+        function getBadgeId(){
+            let badgeId = Math.ceil(Math.random()* 4);
+            console.log(badgeId)
+            if(badgeId === 1){
+                return 'badge1.png';
+            } 
+            else if(badgeId === 2) {
+                return 'badge2.jpg';
+            }
+            else if(badgeId === 3) {
+                return 'badge3.jpg';
+            }
+            else {
+               return 'badge4.png';
+            }
+        }
+
+
+function badgeRoll(pictureid, height, width) 
+        {
+            let badge = getBadgeId();
+            document.getElementById(pictureid).src = badge;
+            document.getElementById(pictureid).style.height = height;
+            document.getElementById(pictureid).style.width = width;
+            new Audio("tone.mp3").play();
+        }
+
+    </script>
+
+
+</body>
+
+</html>
