@@ -19,13 +19,13 @@
 <body>
 
     <div id="colorting"></div>
-<button onclick="colorswap ('blue')">Red</button>
-<button onclick="colorswap ('red')">Blue</button>
+<button onclick="colorswap ('blue','100px','50px')">Red</button>
+<button onclick="colorswap ('red','50px','100px')">Blue</button>
 
     <script>
-   function colorswap(color){
+   function colorswap(color,widht,height){
      document.getElementById('colorting').innerHTML = /*html*/`
-     <div style="background-color:${color}; width:100%; height:100px;"></div>
+     <div style="background-color:${color}; width:${widht}; height:${height};"></div>
         `;
 }
 
