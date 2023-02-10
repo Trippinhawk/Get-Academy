@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatable" content="IE-edge">
+    <meta name="viewpoiunt" content="witch=device-width, initial-scale=1.0">
+
+
+    <title>Up and Down</title>
+    <style>
+.bar{
+    width: 500px;
+    height: 60px;
+
+}
+
+
+    </style>
+</head>
+
+<body>
+
+<progress class="bar" value="100" max="100" id="progressBar">Test</progress>
+
+
+    <script>
+
+
+var timeleft = 100;
+var downloadTimer = setInterval(function(){
+  if(timeleft <= 0){
+    clearInterval(downloadTimer);
+  }
+  document.getElementById("progressBar").value = 100 - timeleft;
+  timeleft -= 1;
+}, 1000);
+
+    </script>
+
+
+</body>
+
+</html>

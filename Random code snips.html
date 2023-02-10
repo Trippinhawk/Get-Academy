@@ -92,5 +92,241 @@ function numd(){
             box-shadow: 7px 5px 5px
         }
     </style>
+
+
+<body>
+    <input id="textinput" type="text" onchange="updateText()"> 
+    <div id="result">result here: </div>
+    <script>
+        //onchange - trigger funksjonen kun på enter
+        //oninput - trigger funksjonen for hvert tegn man skriver inn
+
+        // M - Model (dataene våre / variabler)
+        let text;
+        let output;
+        // V - View (det vi ser på skjermen)
+        function updateView(){
+            document.getElementById('result').innerHTML = output;
+        }
+
+        // C - Controller (det som endrer datane våre)
+
+        function updateText(){
+          text = document.getElementById('textinput').value;
+          checkIfIncludesSarcasm(text) // PAUSE TIL 13.11
+        }
+        function checkIfIncludesSarcasm(textToCheck){
+            //hvis textToCheck inneholder stringen (...) 
+            // - så skal man gjøre noe i if klammene 
+            let includesSarcasm = textToCheck.includes('...');
+            console.log(includesSarcasm)
+            if(includesSarcasm == true){
+                // dersom includesSarcasm = true kommer vi hit
+                output = 'Sarcasm detected!'
+            }
+            else{
+                // dersom includesSarcasm = false kommer vi hit
+                output = 'No sarcasm detected!'
+            }
+            
+        }
+        
+
+        //model
+const app = document.getElementById("app");
+
+let guessNumber;
+let secretNumber;
+
+
+//view
+function updateView() {
+const guessText = guessNumber == null ? '' : `Du tippet <b><span style="color:#b58900;">${guessNumber}</span></b>.<br><br>`;
+
+let isCorrectOrNotText =
+    guessNumber == null ? 'Skriv et tall mellom 0 til 100':
+    guessNumber == secretNumber ? '<b><span style="color:#4a9900;">Du har tippet riktig!</span></b>' :
+    guessNumber < secretNumber ? '<span style="color:#dc322f;">Du har tippet for <b>lavt</b></span>.' :
+    guessNumber > secretNumber ? '<span style="color:#dc322f;">Du har tippet for <b>høyt</b></span>.' :
+{ }
+    // let isCorrectOrNotText;
+    // if(guessNumber == null){
+    //     isCorrectOrNotText = 'Skriv inn et tall og trykk på "Tipp" knappen.';
+    // }else if (guessNumber == secretNumber) {
+    //     isCorrectOrNotText = '<b>Du har tippet riktig!</b>';
+    // } else if (guessNumber < secretNumber) {
+    //     isCorrectOrNotText = 'Du har tippet for lavt.'
+    // } else {
+    //     isCorrectOrNotText = 'Du har tippet for høyt.'; 
+    // }
+
+    document.getElementById("app").innerHTML = `
+        <h2>Gjett riktig tall</h2>
+
+        ${guessText}
+        ${isCorrectOrNotText}
+
+        <br><br>
+        <input type="text" oninput="guessNumber = parseInt(this.value)"/> 
+        <button onclick="guess()">Nytt tall</button>
+        <button onclick="startGame()">Spill på nytt</button>
+    `;
+}
+
+//controller
+startGame();
+function startGame() {
+    guessNumber = null;
+    secretNumber = Math.ceil(Math.random() * 100);
+    updateView();
+}
+
+function guess(){
+    updateView();
+}
+
+
+
+
+   //Model 
+   let tall1 = 0;
+        let tall2 = 1;
+        let størstTall = '';
+
+        
+        //View
+        updateView()
+        function updateView() {
+            let html = /* html */`
+            <div>Tall1: ${tall1}</div>
+            <div>Tall2: ${tall2}</div>  
+            <div>StørstTall: ${størstTall}</div>
+            <div onclick="økTallet(this)">1</div>
+            <button onclick="increaseNumber()">Increase tall1</button>
+            <button onclick="decreaseNumber()">Decrease num</button>
+            <button onclick="whichIsBiggest()">Finn størst tall</button>
+            `;
+
+            document.getElementById('app').innerHTML = html;
+        }
+
+        //Controller
+        function increaseNumber(){
+            tall1++;
+            updateView();
+            //tall1 += 1;
+            //tall1 = tall1 + 1;
+        }
+        function decreaseNumber(){
+            tall2--;
+            updateView();        
+        }
+        function whichIsBiggest(){            
+            if(tall1 > tall2){
+                størstTall = 'tall1 er størst!'
+            }
+            else if(tall1 < tall2){
+                størstTall = 'tall2 er størst!'
+            }
+            else{
+                størstTall = 'tallene er like'
+            }
+            updateView()  
+        }
+
+        // Annet ræl
+        checkifNotEqual('Linn','linn')
+
+        checkIfEqualAndNotZero(3,3)
+        checkIfEqualOrNotZero(2,3)
+
+        function checkIfEqualAndNotZero(numbah1, numbha2){
+            if(numbah1 == numbha2 && numbah1 != 0){
+                console.log('Tallene er ikke null, og de er like!')
+            }else{
+                console.log('Tallene er enten null, ellers er de ikke like!')
+            }
+        }
+        function checkIfEqualOrNotZero(numbah1, numbha2){
+            if(numbah1 == numbha2 || numbah1 != 0){
+                console.log('Tall1 er ikke null ELLER så er tallene like!')
+            }else{
+                console.log('Tallene er hverken null, eller like!')
+            }
+        }
+
+        function checkifNotEqual(teacherName, anotherTeacherName){
+            if(teacherName.toLowerCase() !== anotherTeacherName ){
+                console.log('Navnene er ikke like!')
+            }else{
+                console.log('Navnene er like!')
+            }   
+        }
+        
+        function økTallet(divenMin){
+           console.log('Diven min: ' + divenMin)
+           let verdi = divenMin.innerHTML;
+           console.log('verdi variablen: ' + verdi)
+           verdi = verdi +  'er tallet';
+           divenMin.innerHTML = verdi;
+           console.log('div ny innerhtml: ' + divenMin.innerHTML)
+        }
+
+
+
+ //Model
+ let moneyInMachine = 0;
+        let infoText = 'Du har ikke fått noe'
+
+        //View
+        updateView()
+        function updateView(){
+            document.getElementById('app').innerHTML = /*html*/`
+            <img onclick="getBall()" height="150" src="gumball.jpg" >
+            <button onclick="addMoney()">legg på penger</button>
+            <div>Du har lagt på ${moneyInMachine} kr</div>
+            <div>${infoText}</div>
+            `;
+        }
+        
+        // Controller
+        function addMoney(){
+            moneyInMachine = moneyInMachine + 10;
+            updateView();
+        }
+        function getBall(){
+            //gumball koster 20kr
+            if(moneyInMachine >= 20){
+                // brukeren skal få en gumball
+                infoText = getRandomGumballColor()
+                moneyInMachine -= 20;
+            }else{
+                //si fra at man ikke har nok penger
+                infoText = "Du har ikke nok penger"
+            }
+            updateView()
+        }
+        function getRandomGumballColor(){
+           let randomValue =  Math.floor(Math.random() *3)
+           if(randomValue == 0){
+                return 'You got a pink gumball';
+           }else if(randomValue == 1){
+                return 'You got a blue gumball';
+           }else{
+                return 'You got a green gumball'
+           }
+
+        }
+
+
+
+
+    </script>
+
+
+
+
+
+
 </body>
 </html>

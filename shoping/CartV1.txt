@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatable" content="IE-edge">
+    <meta name="viewpoiunt" content="witch=device-width, initial-scale=1.0">
+
+
+    <title>Up and Down</title>
+    <style>
+
+
+
+    </style>
+</head>
+
+<body>
+    <div id="app"></div>
+
+
+
+    <script>
+        //Model 
+        let inputValue =''
+        let handleliste = ['Melk', 'Brød', 'Monster', 'Egg', 'Smør']
+
+        //View
+        updatePage();
+        function updatePage(){
+        let html ='';
+
+        for (let i = 0; i < handleliste.length; i++) {
+                html += `
+                    <li>
+                        ${handleliste[i]} 
+                        <button onclick="changeItem(${i})">Swap</button>
+                        <button onclick="deleteItem(${i})">x</button>
+                    </li> `
+            }
+
+            html += `<input oninput="inputValue = this.value" type="text"> <button onclick="addItem()">Legg til </button>`;
+            document.getElementById("app").innerHTML = html;
+}
+
+//Controller 
+function addItem() {
+            handleliste.push(inputValue);
+            inputValue = "";
+            updatePage();
+        }
+
+        function deleteItem(index) {
+            handleliste.splice(index, 1);
+            updatePage();
+        }
+        function changeItem(index) {
+            handleliste[index] = inputValue;
+            updatePage();
+        }
+    </script>
+
+
+</body>
+
+</html>

@@ -16,7 +16,7 @@
         .gridtest {
             display: grid;
             gap: 10px;
-            grid-template-columns: repeat(4,1fr);
+            grid-template-columns: repeat(4, 1fr);
             grid-template-columns: repeat(autofit, minmax(260px, 1fr));
         }
 
@@ -25,11 +25,13 @@
             background-color: rgb(38, 36, 46);
             font-size: large;
             font-weight: bold;
+            border-radius: 10px;
+            text-align: center;
         }
 
         .words {
             width: 100px;
-            padding-top:3px;
+            padding-top: 3px;
             text-align: center;
             color: aliceblue;
             display: flex;
@@ -39,7 +41,8 @@
             transition: color 0.2s linear;
 
         }
-        .words:hover{
+
+        .words:hover {
             color: red;
         }
 
@@ -66,7 +69,7 @@
             <div class="words" onclick="choice1(this)">Orc</div>
             <div class="words" onclick="choice1(this)">Night Elf</div>
         </div>
-        
+
         <div class="box">
             <div class="words" onclick="choice2(this)">Warrior</div>
             <div class="words" onclick="choice2(this)">Shaman</div>
