@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="parameter-UA-Compatable" content="IE-edge">
+    <meta name="viewpoiunt" content="witch=device-width, initial-scale=1.0">
+    <title>Ronni Råner</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        button {
+            border-radius: 30px;
+            width: 300px;
+            height: 60px;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: rgb(151, 151, 151);
+        }
+
+        .textbox {
+            border-radius: 30px;
+            margin: auto;
+            border: solid;
+            border-color: blueviolet;
+            width: 500px;
+            height: 100px;
+        }
+        .points{
+            font-size: 300%;
+        }
+        img {
+            border-radius: 40px;
+            height: 350px;
+            width: 350px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app"></div>
+    <div class="points" id="points"></div>
+
+    <script>
+
+        //Model
+        let html = document.getElementById('app')
+        let kulhet = 30;
+        let mainEvents = [
+            //VEIKRYSS
+            `
+            <div class="textbox">Veikryss, hvilken vei svinger du?</div>
+            <button onclick="veikryss('venstre')">Venstre</button>
+            <button onclick="veikryss('rett')">Rett fram</button>
+            <button onclick="veikryss('høyre')">Høyre</button>
+            `,
+            //BENSIN 
+            `
+            <div class="textbox">Bensin stasjon, hva gjør du?</div>
+            <button onclick="bensin('wonderbaum')">Kjøp en wonderbaum</button>
+            <button onclick="bensin('vask')">Vask bilen</button>
+            <button onclick="bensin('skryt')">Skryte til gjengen som henger uttafor</button>
+            `,
+            //HOBO            
+            `
+            <div class="textbox">Du møter en uteligger. han spør om å låne 100 lapp</div>
+            <div class="yo">
+            <button onclick="hobo('gilapp')">Du sa ja og ga han 100 lapp</button>
+            <button onclick="hobo('kjørfram')">Bare Kjør Videre</button>
+            <button onclick="hobo('sandwitch')">Gi han en matpake</button>
+            <img src="Homless_Benji.png"
+            </div>            
+            `,
+            //KOMPISMØTE
+            `
+            <div class="textbox"> Du passerer kompis Roi:</div>
+            <button onclick="roiMøte('vinke')">Vink</button>
+            <button onclick="roiMøte('tute')">Tut</button>
+            <button onclick="roiMøte('musikk')">Rull ned vinduene, og spill musikk</button>
+            `
+        ];
+        let specificEvents = [`
+            <div class="textbox">Personen er bevisstløs:</div>
+            <button onclick="giveHelp('call911')">Ring 113!</button>
+            <button onclick="giveHelp('giHLR')">Start hjerte-lunge redning!</button>
+            `, `
+            <div class="textbox">Han Ropte etter deg og kasta stein gjennom bakvinduet ditt:</div>
+            <button onclick="steinkast('steinn')">Kjør Videre</button>
+            `, //veiarbeid
+            `
+            <div class="textbox">Du valgte å kjøre, så du kjørte over Benjamin. Hva sier du til han før du kjører?</div>
+            <div>
+            <button onclick="hvaSierDu('logg')">Husk logg!</button>
+            <button onclick="hvaSierDu('gårBra')">Går det bra?</button>
+            <button onclick="hvaSierDu('haha')">*Hahahaha*</button>
+            <br>
+            <img src ="Ded_Benji.png">
+            </div>
+            `,
+            //veiarbeid
+            `
+            <div class="textbox">Veiarbeid som dekker 90% av veibanen, hva gjør du?</div>
+            <div>
+                <button onclick="veiarbeid('kjører')">Kjører</button>
+                <button onclick="veiarbeid('tilbake')">Snu og kjøre tilbake</button>
+                <img src="Working_Benji.png">
+            </div>
+                `
+            ]
+
+        let rareEvents = [`
+            <div class="textbox">Biltema! Hva skal du kjøpe til bilen?</div>
+            <button onclick="biltema('basskasse')">Fett Basskasse</button>
+            <button onclick="biltema('dice')">Svær Fluffy Dice til speile</button>
+            <button onclick="biltema('ledlys')">Led Lys Stripe For ogklistre under bilen</button>
+            <button onclick="biltema('panda')">En Panda Plushy til Benjamin</button>
+            `, `
+            <div class="textbox"> Du traff en full person i veibanen!</div>
+            <button onclick="crash(livHjelp)">Løp ut og start livredning!</button>
+            <button onclick="crash(fortsettFrem)">Kjør videre.</button>
+            <button onclick="crash(giDrikke)">Si unnskyld, og gi en øl.</button>
+            `, `
+            <div class="textbox">Kjører gjennom et nabolag, en bil kommer kjørende og du treffer den</div>
+            <button onclick="hit('sePåSkade')">Gå ut å se på skadene</button>
+            <button onclick="hit('fortsettFrem')">kjør videre</button>
+            <button onclick="hit('ringEtterHjelp')">Ring ambulanse</button>
+            `
+        ]
+
+
+        //View
+        updateView()
+        updatePoints()
+        function updateView() {
+            document.getElementById('app').innerHTML = mainEvents[2];
+        }
+        function updatePoints() {
+            document.getElementById('points').innerHTML = 'Kulhet:' + `<br>${kulhet}`
+        }
+
+
+        //Controller
+        function veikryss(parameter) {
+            let num = rndm(4)
+            if (parameter == 'venstre') {
+                if (num > 2) {
+                    document.getElementById('app').innerHTML = rareEvents[rndm(rareEvents.length)]
+                } else if (num > 1) {
+                    document.getElementById('app').innerHTML = sideEvents[rndm(rareEvents.length)]
+                } else {
+                    document.getElementById('app').innerHTML = mainEvents[rndm(mainEvents.length)]
+                }
+            } else if (parameter == 'høyre') {
+                if (num > 1) {
+                    document.getElementById('app').innerHTML = mainEvents[rndm(mainEvents.length)]
+                } else {
+                    document.getElementById('app').innerHTML = rareEvents[rndm(sideEvents.length)]
+                }
+            } else {
+                document.getElementById('app').innerHTML = mainEvents[rndm(mainEvents.length)]
+            }
+            updatePoints()
+        }
+
+        function bensin(parameter) {
+            if (parameter == 'wonderbaum') {
+                kulhet -= 5
+            } else if (parameter == 'vask') {
+                kulhet += 5
+            } else {
+                if (kulhet > 40) {
+                    kulhet += 10
+                } else {
+                    kulhet -= 20
+                }
+            }
+            document.getElementById('app').innerHTML = mainEvents[0]
+            updatePoints()
+        }
+        function roiMøte(parameter) {
+            if (parameter == 'musikk') {
+                document.getElementById('app').innerHTML= mainEvents[rndm(mainEvents.length)]
+                kulhet += 5
+            }else{
+                kulhet -= 5
+            }
+            updatePoints()
+        }
+
+        function veiarbeid(parameter) {
+            if (parameter == 'kjører') {
+                kulhet -= 30
+                document.getElementById('app').innerHTML = specificEvents[2]
+            }
+            else {
+                kulhet += 5
+                document.getElementById('app').innerHTML = mainEvents[rndm(mainEvents.length)]
+            }
+            updatePoints()
+        }
+        
+        function hvaSierDu(parameter){
+            if(parameter == 'logg'){
+            kulhet += 10
+            document.getElementById('app').innerHTML = mainEvents[rndm(mainEvents.length)]
+            }
+            else if(parameter == 'gårBra') {
+                kulhet += 5
+                document.getElementById('app').innerHTML = mainEvents[rndm(mainEvents.length)]
+            }
+            else{
+                kulhet -= 5
+                document.getElementById('app').innerHTML = mainEvents[rndm(mainEvents.length)]
+            }
+            updatePoints()
+        }
+
+        function steinkast(parameter) {
+            if (parameter == 'steinn') {
+                kulhet += 0
+                document.getElementById('app').innerHTML = mainEvents[0]
+            }
+            updatePoints()
+        }
+
+        function hobo(parameter) {    // LOL
+            if (parameter == 'gilapp') {
+                kulhet += 5
+                document.getElementById('app').innerHTML = mainEvents[rndm(mainEvents.length)]
+            } else if (parameter == 'kjørfram') {
+                kulhet -= 15
+                document.getElementById('app').innerHTML = specificEvents[1];
+                new Audio('rva.mp3').play();
+            } else {
+                kulhet += 3
+                document.getElementById('app').innerHTML = mainEvents[rndm(mainEvents.length)];
+            }
+            updatePoints()
+        }
+
+        function biltema(parameter) {
+            if (parameter == 'basskasse') {
+                document.getElementById('app').innerHTML = mainEvents[0];
+                kulhet += 10
+            } else if (parameter == 'dice') {
+                document.getElementById('app').innerHTML = mainEvents[0];
+                kulhet += 5
+            } else if (parameter == 'ledlys') {
+                document.getElementById('app').innerHTML = mainEvents[0];
+                kulhet -= 20
+            } else {
+                document.getElementById('app').innerHTML = mainEvents[0];
+                hulhet += 20
+            }
+            updatePoints()
+        }
+
+        function crash(parameter) {
+            if (parameter == 'livHjelp') {
+                document.getElementById('app').innerHTML = specificEvents[0];
+
+            } else if (parameter == 'fortsettFrem') {
+                document.getElementById('app').innerHTML = mainEvents[0];
+                kulhet -= 15;
+            } else {
+                document.getElementById('app').innerHTML = mainEvents[0];
+                kulhet += 10;
+            }
+            updatePoints()
+        }
+
+        function giveHelp() {
+            if (paramter == 'call911') {
+                document.getElementById('app').innerHTML = mainEvents[0];
+                kulhet += 20;
+            }
+            else {
+                kulhet += 20;
+                document.getElementById('app').innerHTML = mainEvents[0];
+            }
+            updatePoints()
+        }
+
+        function hit(parameter) {
+            if (parameter == 'sePåSkade') {
+                document.getElementById('app').innerHTML = mainEvents[0];
+                kulhet++;
+            }
+
+            else if (parameter == 'fortsettFrem') {
+                document.getElementById('app').innerHTML = mainEvents[0];
+                kulhet--;
+            } else {
+                kulhet += 10;
+                document.getElementById('app').innerHTML = mainEvents[0];
+            }
+            updatePoints()
+        }
+
+
+        function rndm(parameter) {
+            return Math.floor(Math.random() * parameter)
+        }
+    </script>
+
+</body>
+
+</html>

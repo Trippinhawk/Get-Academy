@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatable" content="IE-edge">
+    <meta name="viewpoiunt" content="witch=device-width, initial-scale=1.0">
+    <title>Ronni Råner</title>
+    <style>
+        body {
+            justify-content: center;
+        }
+        button{
+            width: 100px;
+            height: 30px;
+            margin: 10px;
+        }
+
+        .textBox {
+            border: solid;
+            border-color: blueviolet;
+            width: 500px;
+            height: 100px;
+        }
+        
+    </style>
+</head>
+
+<body>
+
+    <div id="app"></div>
+
+    <script>
+
+let app1 = document.getElementById('app').innerHTML;
+
+        //Model
+        let kulhet = 0;
+        let mainEvents = [`
+            <div class="textBox">Veikryss, hvilken vei svinger du?</div>
+            <button onclick="veikryss(venstre)">Venstre</button>
+            <button onclick="veikryss(rettFram)">Rett fram</button>
+            <button onclick="veikryss(høyre)">Høyre</button>
+            `,`
+            <div class="textBox">Event2</div>
+            <button onclick="event2valg1">${button1}</button>
+            <button onclick="event2valg2">${button2}</button>
+            <button onclick="">${button3}</button>
+            <button onclick="">${button4}</button>
+            `
+            ];
+
+
+        //View
+        updateView()
+        function updateView() {
+            document.getElementById('app').innerHTML = mainEvents[0];
+        }
+
+
+        //Controller
+        function veikryss(parameter){
+            if(parameter = venstre){
+                
+            }
+        }
+        function rndm(input){
+            return Math.floor(Math.random) * input.length
+        }
+
+    </script>
+
+</body>
+
+</html>
+
+
