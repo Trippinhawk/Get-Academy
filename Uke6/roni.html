@@ -92,7 +92,7 @@
             <button onclick="hilsen('plystre')">Plystre på han</button>
             <button onclick="hilsen('nikk')">Nikk med hodet</button>
             <button onclick="hilsen('finger')">Vis fingeren</button>
-            <img src="benji2.png">
+            <img src="benji2.png>"
             </div>
              `,
             
@@ -192,7 +192,7 @@
                 if (num > 1) {
                     document.getElementById('app').innerHTML = mainEvents[rndm(mainEvents.length)]
                 } else {
-                    document.getElementById('app').innerHTML = rareEvents[rndm(rareEvents.length)]
+                    document.getElementById('app').innerHTML = rareEvents[rndm(sideEvents.length)]
                 }
             } else {
                 document.getElementById('app').innerHTML = mainEvents[rndm(mainEvents.length)]
@@ -403,7 +403,6 @@
         function rndm(parameter) {
             return Math.floor(Math.random() * parameter)
         }
-        
         function rndmPlus(parameter) {
             return Math.ceil(Math.random() * parameter)
         }
